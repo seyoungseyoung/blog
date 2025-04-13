@@ -27,9 +27,34 @@ def get_kst_time():
 
 def main():
     """메인 실행 함수"""
+    # --- 요일/시간 확인 로직 추가 ---
+    now = get_kst_time()
+    weekday = now.weekday() # Monday is 0, Sunday is 6
+    hour = now.hour
+
+    # 실행해야 하는 시간대 정의 (월요일 00:00 ~ 토요일 07:30)
+    is_active_time = False
+    if weekday == 0: # Monday
+        is_active_time = True
+    elif weekday == 1: # Tuesday
+        is_active_time = True
+    elif weekday == 2: # Wednesday
+        is_active_time = True
+    elif weekday == 3: # Thursday
+        is_active_time = True
+    elif weekday == 4: # Friday
+        is_active_time = True
+    elif weekday == 5 and hour < 8: # Saturday morning (00, 03, 06, 07:30)
+        is_active_time = True
+
+    if not is_active_time:
+        print(f"현재 시간({now.strftime('%Y-%m-%d %H:%M:%S')})은 작업 시간이 아니므로 건너뛰었습니다.")
+        return
+    # --- 확인 로직 끝 ---
+
     try:
         print("\n=== 시장 분석 및 블로그 포스팅 프로그램 시작 ===\n")
-        print(f"현재 한국 시간: {get_kst_time().strftime('%Y-%m-%d %H:%M:%S')}")
+        print(f"현재 한국 시간: {now.strftime('%Y-%m-%d %H:%M:%S')}")
         
         # 환경 변수 로드
         print("환경 변수 및 설정 로드 중...")
@@ -120,7 +145,7 @@ def main():
             print("- 네이버 로그인 시도 중...")
             if poster.login():
                 # 한국 시간 기준 현재 날짜 포맷
-                today = get_kst_time().strftime('%Y-%m-%d')
+                today = now.strftime('%Y-%m-%d')
                 
                 # 제목과 내용 준비
                 title = analysis.get('title', f"오늘의 시장 동향 분석 - {today}")
@@ -166,13 +191,17 @@ def main():
     print("\n=== 프로그램 종료 ===")
 
 if __name__ == "__main__":
-    # 한국 시간 기준 매일 오전 7:30과 오후 9:00에 실행
-    schedule.every().day.at("07:30").do(main)
-    schedule.every().day.at("21:00").do(main)
+    # 매일 특정 시간에 main 함수를 실행하도록 스케줄링
+    schedule.every().day.at("21:01", KST).do(main) # 21:00 작업
+    schedule.every().day.at("00:01", KST).do(main) # 00:00 작업
+    schedule.every().day.at("03:01", KST).do(main) # 03:00 작업
+    schedule.every().day.at("06:01", KST).do(main) # 06:00 작업
+    schedule.every().day.at("07:31", KST).do(main) # 07:30 작업
     
-    print(f"스케줄러 설정 완료. 매일 한국 시간 기준 오전 7:30과 오후 9:00에 자동 실행됩니다.")
+    print(f"스케줄러 설정 완료. 매일 지정된 시간에 main 함수를 호출합니다.")
+    print(f"(main 함수 내부에서 실제 작업 수행 여부 결정)")
     print(f"현재 한국 시간: {get_kst_time().strftime('%Y-%m-%d %H:%M:%S')}")
-    
+        
     while True:
         schedule.run_pending()
         time.sleep(60)

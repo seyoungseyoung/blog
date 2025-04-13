@@ -916,3 +916,106 @@ h3.Mb(5px)
 2025-04-10 11:05:12,689 - utils - INFO - 프로그램 초기화 완료
 2025-04-10 11:05:18,803 - market_analyzer - INFO - Processed 5 news items with date: 2025-04-10
 2025-04-10 11:07:36,818 - utils - INFO - 블로그 포스팅 성공: - 미국 관세 유예 발표로 니케이 225 8% 급등… 아시아 시장 반등의 지속 가능성은?
+2025-04-10 21:00:30,178 - utils - INFO - 프로그램 초기화 완료
+2025-04-10 21:00:37,495 - market_analyzer - INFO - Processed 5 news items with date: 2025-04-10
+2025-04-10 21:03:21,902 - utils - INFO - 블로그 포스팅 성공: "트럼프 관세 유예로 주식·채권 시장 반등…장기적 영향은?"
+2025-04-11 07:30:28,557 - utils - INFO - 프로그램 초기화 완료
+2025-04-11 07:30:34,375 - market_analyzer - INFO - Processed 5 news items with date: 2025-04-11
+2025-04-11 07:32:08,649 - blog_poster - ERROR - Failed to setup WebDriver: Message: session not created: probably user data directory is already in use, please specify a unique value for --user-data-dir argument, or don't use --user-data-dir
+Stacktrace:
+	GetHandleVerifier [0x00007FF70ED21F55+78133]
+	GetHandleVerifier [0x00007FF70ED21FB0+78224]
+	(No symbol) [0x00007FF70EAE91BA]
+	(No symbol) [0x00007FF70EB25A1A]
+	(No symbol) [0x00007FF70EB219DD]
+	(No symbol) [0x00007FF70EB75108]
+	(No symbol) [0x00007FF70EB746E0]
+	(No symbol) [0x00007FF70EB66F33]
+	(No symbol) [0x00007FF70EB30358]
+	(No symbol) [0x00007FF70EB310C3]
+	GetHandleVerifier [0x00007FF70EFEBA8D+3001453]
+	GetHandleVerifier [0x00007FF70EFE5E72+2977874]
+	GetHandleVerifier [0x00007FF70F00497D+3103581]
+	GetHandleVerifier [0x00007FF70ED3C7EA+186826]
+	GetHandleVerifier [0x00007FF70ED443FF+218591]
+	GetHandleVerifier [0x00007FF70ED29D94+110452]
+	GetHandleVerifier [0x00007FF70ED29F42+110882]
+	GetHandleVerifier [0x00007FF70ED10379+5465]
+	BaseThreadInitThunk [0x00007FFA88277374+20]
+	RtlUserThreadStart [0x00007FFA89F9CC91+33]
+Traceback (most recent call last):
+  File "c:\Users\aaa\code\blog\blog\src\blog_poster.py", line 48, in setup_driver
+    self.driver = webdriver.Chrome(service=service, options=options)
+                  ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\aaa\Anaconda3\envs\blog\Lib\site-packages\selenium\webdriver\chrome\webdriver.py", line 45, in __init__
+    super().__init__(
+    ~~~~~~~~~~~~~~~~^
+        DesiredCapabilities.CHROME["browserName"],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+        keep_alive,
+        ^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\aaa\Anaconda3\envs\blog\Lib\site-packages\selenium\webdriver\chromium\webdriver.py", line 56, in __init__
+    super().__init__(
+    ~~~~~~~~~~~~~~~~^
+        command_executor=ChromiumRemoteConnection(
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+        options=options,
+        ^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\aaa\Anaconda3\envs\blog\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 208, in __init__
+    self.start_session(capabilities)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Users\aaa\Anaconda3\envs\blog\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 292, in start_session
+    response = self.execute(Command.NEW_SESSION, caps)["value"]
+               ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\aaa\Anaconda3\envs\blog\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 347, in execute
+    self.error_handler.check_response(response)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\aaa\Anaconda3\envs\blog\Lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 229, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.SessionNotCreatedException: Message: session not created: probably user data directory is already in use, please specify a unique value for --user-data-dir argument, or don't use --user-data-dir
+Stacktrace:
+	GetHandleVerifier [0x00007FF70ED21F55+78133]
+	GetHandleVerifier [0x00007FF70ED21FB0+78224]
+	(No symbol) [0x00007FF70EAE91BA]
+	(No symbol) [0x00007FF70EB25A1A]
+	(No symbol) [0x00007FF70EB219DD]
+	(No symbol) [0x00007FF70EB75108]
+	(No symbol) [0x00007FF70EB746E0]
+	(No symbol) [0x00007FF70EB66F33]
+	(No symbol) [0x00007FF70EB30358]
+	(No symbol) [0x00007FF70EB310C3]
+	GetHandleVerifier [0x00007FF70EFEBA8D+3001453]
+	GetHandleVerifier [0x00007FF70EFE5E72+2977874]
+	GetHandleVerifier [0x00007FF70F00497D+3103581]
+	GetHandleVerifier [0x00007FF70ED3C7EA+186826]
+	GetHandleVerifier [0x00007FF70ED443FF+218591]
+	GetHandleVerifier [0x00007FF70ED29D94+110452]
+	GetHandleVerifier [0x00007FF70ED29F42+110882]
+	GetHandleVerifier [0x00007FF70ED10379+5465]
+	BaseThreadInitThunk [0x00007FFA88277374+20]
+	RtlUserThreadStart [0x00007FFA89F9CC91+33]
+
+2025-04-11 11:43:56,314 - utils - INFO - 프로그램 초기화 완료
+2025-04-11 11:44:02,691 - market_analyzer - INFO - Processed 5 news items with date: 2025-04-11
+2025-04-11 11:46:39,424 - utils - INFO - 블로그 포스팅 성공: "미중 무역 갈등 재점화… 글로벌 시장 충격, 하락세 지속될까?"
+2025-04-11 21:30:22,818 - utils - INFO - 프로그램 초기화 완료
+2025-04-11 21:30:29,090 - data_collector - ERROR - Error collecting news: NaTType does not support strftime
+2025-04-11 21:33:17,480 - utils - INFO - 블로그 포스팅 성공: "미중 관세 협상 재개에 글로벌 시장 술렁…반도체·희토류 주목받는 이유는?"
+2025-04-12 00:38:34,899 - utils - INFO - 프로그램 초기화 완료
+2025-04-12 00:38:42,328 - market_analyzer - INFO - Processed 5 news items with date: 2025-04-12
+2025-04-12 00:41:12,080 - utils - INFO - 블로그 포스팅 성공: "트럼프 관세 발표에 글로벌 시장 동요…금리 상승과 소비 위축 우려는?"
+2025-04-12 03:05:54,369 - utils - INFO - 프로그램 초기화 완료
+2025-04-12 03:06:00,556 - market_analyzer - INFO - Processed 5 news items with date: 2025-04-12
+2025-04-12 03:08:14,566 - utils - INFO - 블로그 포스팅 성공: "미국 관세 정책 강화로 글로벌 시장 불안 가속화…투자자들은 어떻게 대응해야 할까?"
+2025-04-12 06:01:02,369 - utils - INFO - 프로그램 초기화 완료
+2025-04-12 06:01:08,375 - market_analyzer - INFO - Processed 5 news items with date: 2025-04-12
+2025-04-12 06:03:20,259 - utils - INFO - 블로그 포스팅 성공: "미중 무역 갈등 재점화… 글로벌 시장의 불확실성은 어디까지?"
+2025-04-12 07:31:26,618 - utils - INFO - 프로그램 초기화 완료
+2025-04-12 07:31:32,819 - market_analyzer - INFO - Processed 5 news items with date: 2025-04-12
+2025-04-12 07:33:50,025 - utils - INFO - 블로그 포스팅 성공: "관세 갈등 재점화…금융시장 변동성 확대, 투자자들은 어디로 움직여야 하나?"
